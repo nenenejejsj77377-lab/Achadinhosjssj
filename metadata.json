@@ -1,5 +1,6 @@
 {
   "name": "Achadinhos AI",
   "description": "A smart showcase for Shopee finds powered by Gemini AI to automatically organize and display products.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": []
 }

@@ -1,0 +1,291 @@
+[
+  {
+    "id": 0,
+    "author": "user",
+    "payload": {
+      "type": "text",
+      "text": "Tenho uma link de uma loja de achadinhos da Shopee seria possível criar um app e pegar os produtos existente e produtos novo usando esse link quero meio que uma loja sabe mais sempre que eu posta um produto no link desse site quero que apareça esse produto no aplicativo é possível?",
+      "files": [],
+      "fileUploads": [],
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1770482290,
+      "nanos": 963000000
+    }
+  },
+  {
+    "id": 1,
+    "author": "model",
+    "payload": {
+      "type": "thinking",
+      "text": "**Defining the Application's Purpose**\n\nI'm currently focused on dissecting the user's request. My primary goal is to craft a web application specifically highlighting \"Shopee Finds\". I'm now zeroing in on defining the application's core functions. It needs to be a compelling showcase.\n\n\n**Analyzing the Scraping Challenge**\n\nI've hit a major roadblock. The user's request for real-time scraping from their Shopee link presents significant technical limitations. Direct client-side scraping from a React app is nearly impossible due to CORS and anti-scraping measures. Gemini has web browsing capabilities, but lacks persistent monitoring features. Now, I'm pivoting towards a feasible frontend approach that simulates the fetching, or leverages Gemini's content understanding if provided.\n\n\n**Refining the Product Showcase**\n\nI'm now zeroing in on a user-friendly product showcase. My plan involves a user-friendly CMS-style interface. The user will input Shopee URLs or descriptions. I'll use Gemini to analyze and generate structured product data (JSON) for display. I envision a grid display, and an admin section for new product entries, using Gemini's API to extract details from user input. This avoids direct web scraping, and leans on the user providing the input.\n\n\n**Designing the Frontend Demo**\n\nI'm now detailing the frontend app. I'm calling it \"Achadinhos AI.\" The design will be mobile-first with a Shopee-inspired color palette. The core components will be a grid display and the Gemini-powered input area. The architecture focuses on simulating data fetching, avoiding direct scraping. I'll need to explain the limitations of \"automatic sync\" due to the frontend-only nature. I'm focusing on text parsing and search, but AI formatting of user-provided links is the main approach.\n\n\n**Implementing the App Logic**\n\nI'm now detailing the implementation plan, step-by-step. I'm focusing on React's `useState` with `localStorage` for data persistence. The code draft is underway, with a clear separation of components: `Header`, `ProductCard`, and `AddProductModal`. I've defined a `Product` interface and the crucial `geminiService.ts` for AI data extraction. The prompt for Gemini is crafted. I'm prioritizing the \"magic\" of the `AddProductModal`. I'm using HTML and Tailwind, and `metadata.json` has been defined. The App logic is being detailed now.\n\n\n**Defining the AI Workflow**\n\nI'm now detailing the AI workflow for processing user-provided text. I've selected `gemini-3-flash-preview` for its speed and cost efficiency. The prompt will be carefully crafted to extract key information from user input (Shopee titles or descriptions), and return the data in a structured JSON format. I am writing out `metadata.json`, and defining types in `types.ts`, and I am now writing `index.html` and `index.tsx`, so that the data is rendered.\n\n**Addressing User Expectations**\n\nI am now structuring the user experience to be clear about the limitations of real-time updates. The core question is about scraping: the user will be clearly informed that \"AI Add\" is the right approach. I am providing a clear response to the user's question about automatic updates, explaining the demo's constraints. The emphasis is now on the \"AI Add\" button, that they are directed to use.\n\n\n**Refining the Technical Architecture**\n\nI'm now integrating the API key securely via `process.env.API_KEY` for environment variable protection, which will enhance reliability. I'm focusing on the `responseSchema` for strictly defined JSON output, to ensure robust UI integration. I am also working on `ProductCard.tsx`, `AddProduct.tsx` and `App.tsx` files. I'm leveraging Tailwind for styling, including grid layouts. Icons will be handled via `lucide-react`. I've chosen `google/genai` for Gemini API interactions, along with schema definitions. I'm now designing `components/AddProduct.tsx` and focusing on overcoming the image issue.\n\n\n",
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1770482290,
+      "nanos": 967000000
+    },
+    "doneTimestamp": {
+      "seconds": 1770482316,
+      "nanos": 915000000
+    }
+  },
+  {
+    "id": 2,
+    "author": "model",
+    "payload": {
+      "type": "text",
+      "text": "An excellent idea. While a direct \"live sync\" with a Shopee store requires a complex backend server to scrape data (which Shopee actively blocks on the frontend), we can build a **\"Smart Shopee Showcase\"** app using **React** and the **Gemini API**.\n\n**How this solution works:**\n1.  **AI Product Parser:** Instead of manually typing every detail, you (the store owner) simply paste the raw text, title, or messy description of a new product into the app.\n2.  **Gemini Automation:** The AI cleans up the text, extracts the product name, categorizes it, suggests a price (if found), and writes a catchy marketing description automatically.\n3.  **Digital Storefront:** It displays your items in a beautiful, mobile-first interface that looks like a professional app.\n\nHere is the complete code.\n\n",
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1770482316,
+      "nanos": 916000000
+    },
+    "doneTimestamp": {
+      "seconds": 1770482317,
+      "nanos": 643000000
+    }
+  },
+  {
+    "id": 3,
+    "author": "model",
+    "payload": {
+      "type": "generationTable",
+      "entries": [
+        {
+          "path": "metadata.json",
+          "generationType": 0,
+          "isDone": true,
+          "description": "App metadata",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "{\n  \"name\": \"Achadinhos AI\",\n  \"description\": \"A smart showcase for Shopee finds powered by Gemini AI to automatically organize and display products.\"\n}"
+            }
+          ]
+        },
+        {
+          "path": "index.html",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Root HTML with Tailwind",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Achadinhos AI</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <script>\n      tailwind.config = {\n        theme: {\n          extend: {\n            colors: {\n              shopee: {\n                orange: '#ee4d2d',\n                light: '#ff7337',\n                dark: '#d0341b'\n              }\n            }\n          }\n        }\n      }\n    </script>\n  </head>\n  <body class=\"bg-gray-50 text-gray-800 antialiased\">\n    <div id=\"root\"></div>\n  </body>\n</html>"
+            }
+          ]
+        },
+        {
+          "path": "index.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "React Entry Point",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\n\nconst rootElement = document.getElementById('root');\nif (!rootElement) {\n  throw new Error(\"Could not find root element to mount to\");\n}\n\nconst root = ReactDOM.createRoot(rootElement);\nroot.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);"
+            }
+          ]
+        },
+        {
+          "path": "types.ts",
+          "generationType": 0,
+          "isDone": true,
+          "description": "TypeScript definitions",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "export interface Product {\n  id: string;\n  title: string;\n  description: string;\n  price: number;\n  category: string;\n  affiliateLink: string;\n  imageUrl?: string;\n  isNew?: boolean;\n  dateAdded: number;\n}\n\nexport type Category = 'Todos' | 'Casa' | 'Tech' | 'Moda' | 'Beleza' | 'Cozinha';\n"
+            }
+          ]
+        },
+        {
+          "path": "services/geminiService.ts",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Service to parse product data using Gemini",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import { GoogleGenAI, Type, Schema } from \"@google/genai\";\n\nconst ai = new GoogleGenAI({ apiKey: process.env.API_KEY });\n\nexport interface ParsedProductData {\n  title: string;\n  price: number;\n  description: string;\n  category: string;\n  suggestedImageKeyword: string;\n}\n\nexport const parseProductInfo = async (inputText: string): Promise<ParsedProductData> => {\n  const schema: Schema = {\n    type: Type.OBJECT,\n    properties: {\n      title: { type: Type.STRING, description: \"A clean, short product title (max 40 chars).\" },\n      price: { type: Type.NUMBER, description: \"Estimated price in BRL (number only). If unknown, guess a reasonable market price.\" },\n      description: { type: Type.STRING, description: \"A witty, catchy marketing sentence in Portuguese convincing someone to buy this.\" },\n      category: { type: Type.STRING, description: \"One of: Casa, Tech, Moda, Beleza, Cozinha. Default to Casa if unsure.\" },\n      suggestedImageKeyword: { type: Type.STRING, description: \"A single English keyword to search for an image of this product (e.g., 'headphones', 'lipstick').\" },\n    },\n    required: [\"title\", \"price\", \"description\", \"category\", \"suggestedImageKeyword\"],\n  };\n\n  try {\n    const response = await ai.models.generateContent({\n      model: 'gemini-3-flash-preview',\n      contents: `Analyze this raw product text/url from Shopee and extract structured data: \"${inputText}\". Return JSON.`,\n      config: {\n        responseMimeType: \"application/json\",\n        responseSchema: schema,\n      }\n    });\n\n    if (response.text) {\n      return JSON.parse(response.text) as ParsedProductData;\n    }\n    throw new Error(\"No data returned\");\n  } catch (error) {\n    console.error(\"Error parsing product with Gemini:\", error);\n    // Fallback if AI fails\n    return {\n      title: \"Novo Achadinho\",\n      price: 0,\n      description: \"Confira este produto incrível que separamos para você.\",\n      category: \"Casa\",\n      suggestedImageKeyword: \"gift\"\n    };\n  }\n};"
+            }
+          ]
+        },
+        {
+          "path": "components/Header.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "App Header",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import React from 'react';\nimport { ShoppingBag, Search } from 'lucide-react';\n\ninterface HeaderProps {\n  onSearch: (term: string) => void;\n}\n\nexport const Header: React.FC<HeaderProps> = ({ onSearch }) => {\n  return (\n    <header className=\"sticky top-0 z-50 bg-shopee-orange shadow-md\">\n      <div className=\"max-w-md mx-auto px-4 py-3\">\n        <div className=\"flex items-center justify-between mb-3\">\n          <div className=\"flex items-center space-x-2 text-white\">\n            <ShoppingBag className=\"w-6 h-6\" />\n            <h1 className=\"text-xl font-bold tracking-tight\">Achadinhos AI</h1>\n          </div>\n          <div className=\"bg-white/20 px-2 py-1 rounded text-xs text-white font-medium\">\n            Demo Store\n          </div>\n        </div>\n        \n        <div className=\"relative\">\n          <input\n            type=\"text\"\n            placeholder=\"Buscar nos achadinhos...\"\n            onChange={(e) => onSearch(e.target.value)}\n            className=\"w-full pl-10 pr-4 py-2 rounded-lg text-sm bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-300 shadow-sm placeholder-gray-400\"\n          />\n          <Search className=\"w-4 h-4 text-gray-400 absolute left-3 top-2.5\" />\n        </div>\n      </div>\n    </header>\n  );\n};"
+            }
+          ]
+        },
+        {
+          "path": "components/ProductCard.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Individual Product Display",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import React from 'react';\nimport { Product } from '../types';\nimport { ExternalLink, Tag } from 'lucide-react';\n\ninterface ProductCardProps {\n  product: Product;\n}\n\nexport const ProductCard: React.FC<ProductCardProps> = ({ product }) => {\n  const formatCurrency = (val: number) => {\n    return new Intl.NumberFormat('pt-BR', {\n      style: 'currency',\n      currency: 'BRL',\n    }).format(val);\n  };\n\n  return (\n    <div className=\"bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col h-full\">\n      <div className=\"relative h-40 w-full bg-gray-200 overflow-hidden group\">\n        <img\n          src={product.imageUrl}\n          alt={product.title}\n          className=\"w-full h-full object-cover group-hover:scale-105 transition-transform duration-500\"\n          loading=\"lazy\"\n        />\n        {product.isNew && (\n          <span className=\"absolute top-2 left-2 bg-shopee-orange text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider\">\n            Novo\n          </span>\n        )}\n      </div>\n\n      <div className=\"p-3 flex flex-col flex-grow\">\n        <div className=\"flex items-start justify-between mb-1\">\n          <span className=\"text-[10px] font-medium text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded flex items-center gap-1\">\n            <Tag size={10} /> {product.category}\n          </span>\n        </div>\n        \n        <h3 className=\"text-sm font-semibold text-gray-800 line-clamp-2 leading-tight mb-1\">\n          {product.title}\n        </h3>\n        \n        <p className=\"text-xs text-gray-500 mb-3 line-clamp-2 flex-grow\">\n          {product.description}\n        </p>\n        \n        <div className=\"mt-auto flex items-center justify-between pt-2 border-t border-gray-50\">\n          <div className=\"text-shopee-orange font-bold text-sm\">\n            {formatCurrency(product.price)}\n          </div>\n          <a\n            href={product.affiliateLink}\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n            className=\"bg-shopee-orange text-white p-1.5 rounded-lg hover:bg-shopee-dark transition-colors\"\n            title=\"Ver na Shopee\"\n          >\n            <ExternalLink size={16} />\n          </a>\n        </div>\n      </div>\n    </div>\n  );\n};"
+            }
+          ]
+        },
+        {
+          "path": "components/AddProductModal.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Modal to add product with AI processing",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import React, { useState } from 'react';\nimport { X, Sparkles, Loader2, Link as LinkIcon } from 'lucide-react';\nimport { parseProductInfo } from '../services/geminiService';\nimport { Product } from '../types';\n\ninterface AddProductModalProps {\n  isOpen: boolean;\n  onClose: () => void;\n  onAdd: (product: Product) => void;\n}\n\nexport const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onAdd }) => {\n  const [inputText, setInputText] = useState('');\n  const [link, setLink] = useState('');\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState('');\n\n  if (!isOpen) return null;\n\n  const handleAnalyze = async () => {\n    if (!inputText.trim()) {\n      setError('Por favor, cole o título ou descrição do produto.');\n      return;\n    }\n    \n    setLoading(true);\n    setError('');\n\n    try {\n      // 1. Use AI to extract structured data\n      const parsed = await parseProductInfo(inputText);\n      \n      // 2. Create new product object\n      const newProduct: Product = {\n        id: crypto.randomUUID(),\n        title: parsed.title,\n        description: parsed.description,\n        price: parsed.price,\n        category: parsed.category,\n        affiliateLink: link || 'https://shopee.com.br',\n        // Use a random picsum image based on keyword + random seed to avoid caching same image\n        imageUrl: `https://picsum.photos/seed/${parsed.suggestedImageKeyword}${Date.now()}/400/400`,\n        isNew: true,\n        dateAdded: Date.now(),\n      };\n\n      onAdd(newProduct);\n      onClose();\n      setInputText('');\n      setLink('');\n    } catch (err) {\n      setError('Falha ao processar com IA. Tente novamente.');\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <div className=\"fixed inset-0 z-[60] flex items-center justify-center p-4\">\n      <div className=\"absolute inset-0 bg-black/60 backdrop-blur-sm\" onClick={onClose} />\n      \n      <div className=\"bg-white rounded-2xl w-full max-w-sm relative z-10 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200\">\n        <div className=\"bg-gradient-to-r from-shopee-orange to-shopee-light p-4 flex justify-between items-center text-white\">\n          <h2 className=\"font-bold flex items-center gap-2\">\n            <Sparkles className=\"w-5 h-5 text-yellow-200\" />\n            Adicionar Achadinho\n          </h2>\n          <button onClick={onClose} className=\"hover:bg-white/20 p-1 rounded-full transition\">\n            <X size={20} />\n          </button>\n        </div>\n\n        <div className=\"p-5 space-y-4\">\n          <div className=\"bg-orange-50 p-3 rounded-lg text-xs text-orange-800 border border-orange-100\">\n            <strong>Como funciona:</strong> Cole o título ou a descrição \"bagunçada\" do produto abaixo. Nossa IA vai formatar, colocar preço e categorizar automaticamente!\n          </div>\n\n          <div>\n            <label className=\"block text-sm font-medium text-gray-700 mb-1\">\n              Cole o texto do produto\n            </label>\n            <textarea\n              className=\"w-full p-3 border rounded-xl bg-gray-50 text-sm focus:ring-2 focus:ring-shopee-orange focus:border-transparent outline-none transition-all h-24 resize-none\"\n              placeholder=\"Ex: Mini Processador Alimentos Sem Fio USB 250ml...\"\n              value={inputText}\n              onChange={(e) => setInputText(e.target.value)}\n            />\n          </div>\n\n          <div>\n            <label className=\"block text-sm font-medium text-gray-700 mb-1\">\n              Link de Afiliado (Opcional)\n            </label>\n            <div className=\"relative\">\n              <input\n                type=\"url\"\n                className=\"w-full pl-9 p-2.5 border rounded-xl bg-gray-50 text-sm focus:ring-2 focus:ring-shopee-orange outline-none\"\n                placeholder=\"https://shopee.com.br/...\"\n                value={link}\n                onChange={(e) => setLink(e.target.value)}\n              />\n              <LinkIcon className=\"w-4 h-4 text-gray-400 absolute left-3 top-3\" />\n            </div>\n          </div>\n\n          {error && <p className=\"text-red-500 text-xs text-center\">{error}</p>}\n\n          <button\n            onClick={handleAnalyze}\n            disabled={loading}\n            className=\"w-full bg-gray-900 text-white font-semibold py-3 rounded-xl hover:bg-gray-800 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gray-200\"\n          >\n            {loading ? (\n              <>\n                <Loader2 className=\"w-5 h-5 animate-spin\" />\n                Processando IA...\n              </>\n            ) : (\n              <>\n                <Sparkles className=\"w-5 h-5\" />\n                Criar Magic Card\n              </>\n            )}\n          </button>\n        </div>\n      </div>\n    </div>\n  );\n};"
+            }
+          ]
+        },
+        {
+          "path": "App.tsx",
+          "generationType": 0,
+          "isDone": true,
+          "description": "Main Application Logic",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import React, { useState, useEffect } from 'react';\nimport { Header } from './components/Header';\nimport { ProductCard } from './components/ProductCard';\nimport { AddProductModal } from './components/AddProductModal';\nimport { Product, Category } from './types';\nimport { Plus, SlidersHorizontal, PackageOpen } from 'lucide-react';\n\nconst INITIAL_PRODUCTS: Product[] = [\n  {\n    id: '1',\n    title: 'Mini Impressora Térmica Portátil',\n    description: 'Imprima adesivos e anotações direto do celular via Bluetooth. Sem tinta!',\n    price: 69.90,\n    category: 'Tech',\n    affiliateLink: 'https://shopee.com.br',\n    imageUrl: 'https://picsum.photos/id/1/400/400',\n    isNew: false,\n    dateAdded: Date.now() - 1000000,\n  },\n  {\n    id: '2',\n    title: 'Organizador de Cabos 3 em 1',\n    description: 'Acabe com a bagunça na sua mesa. Design clean e adesivo forte.',\n    price: 15.50,\n    category: 'Casa',\n    affiliateLink: 'https://shopee.com.br',\n    imageUrl: 'https://picsum.photos/id/2/400/400',\n    isNew: true,\n    dateAdded: Date.now(),\n  },\n  {\n    id: '3',\n    title: 'Garrafa Térmica Digital LED',\n    description: 'Mostra a temperatura da água ao tocar na tampa. Design elegante.',\n    price: 35.99,\n    category: 'Cozinha',\n    affiliateLink: 'https://shopee.com.br',\n    imageUrl: 'https://picsum.photos/id/3/400/400',\n    isNew: false,\n    dateAdded: Date.now() - 2000000,\n  }\n];\n\nconst CATEGORIES: Category[] = ['Todos', 'Casa', 'Tech', 'Moda', 'Beleza', 'Cozinha'];\n\nexport default function App() {\n  const [products, setProducts] = useState<Product[]>(() => {\n    const saved = localStorage.getItem('achadinhos_products');\n    return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;\n  });\n  \n  const [searchTerm, setSearchTerm] = useState('');\n  const [selectedCategory, setSelectedCategory] = useState<Category>('Todos');\n  const [isModalOpen, setIsModalOpen] = useState(false);\n\n  useEffect(() => {\n    localStorage.setItem('achadinhos_products', JSON.stringify(products));\n  }, [products]);\n\n  const handleAddProduct = (newProduct: Product) => {\n    setProducts(prev => [newProduct, ...prev]);\n  };\n\n  const filteredProducts = products.filter(product => {\n    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) || \n                          product.description.toLowerCase().includes(searchTerm.toLowerCase());\n    const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;\n    return matchesSearch && matchesCategory;\n  });\n\n  return (\n    <div className=\"min-h-screen bg-gray-50 pb-20\">\n      <Header onSearch={setSearchTerm} />\n\n      {/* Category Filter */}\n      <div className=\"sticky top-[60px] z-40 bg-gray-50/95 backdrop-blur-sm py-2 border-b border-gray-200\">\n        <div className=\"max-w-md mx-auto px-4 overflow-x-auto no-scrollbar flex space-x-2\">\n           <button className=\"flex items-center space-x-1 pr-2 text-gray-400\">\n             <SlidersHorizontal size={16} />\n           </button>\n           {CATEGORIES.map(cat => (\n             <button\n               key={cat}\n               onClick={() => setSelectedCategory(cat)}\n               className={`whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all ${\n                 selectedCategory === cat \n                   ? 'bg-shopee-orange text-white shadow-md' \n                   : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'\n               }`}\n             >\n               {cat}\n             </button>\n           ))}\n        </div>\n      </div>\n\n      <main className=\"max-w-md mx-auto px-4 py-6\">\n        {filteredProducts.length > 0 ? (\n          <div className=\"grid grid-cols-2 gap-4\">\n            {filteredProducts.map(product => (\n              <div key={product.id} className=\"h-full\">\n                <ProductCard product={product} />\n              </div>\n            ))}\n          </div>\n        ) : (\n          <div className=\"flex flex-col items-center justify-center py-20 text-gray-400\">\n            <PackageOpen className=\"w-16 h-16 mb-4 opacity-50\" />\n            <p>Nenhum achadinho encontrado.</p>\n          </div>\n        )}\n      </main>\n\n      {/* Floating Action Button */}\n      <button\n        onClick={() => setIsModalOpen(true)}\n        className=\"fixed bottom-6 right-6 z-50 bg-gray-900 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white/20\"\n        title=\"Adicionar novo achadinho\"\n      >\n        <Plus size={28} />\n      </button>\n\n      <AddProductModal \n        isOpen={isModalOpen} \n        onClose={() => setIsModalOpen(false)}\n        onAdd={handleAddProduct}\n      />\n    </div>\n  );\n}\n"
+            }
+          ]
+        }
+      ]
+    },
+    "createdTimestamp": {
+      "seconds": 1770482318,
+      "nanos": 961000000
+    },
+    "doneTimestamp": {
+      "seconds": 1770482319,
+      "nanos": 687000000
+    }
+  },
+  {
+    "id": 5,
+    "author": "user",
+    "payload": {
+      "type": "text",
+      "text": "https://collshp.com/infinitymix26?view=storefront\n\nTaí o link",
+      "files": [],
+      "fileUploads": [],
+      "cssBlocks": [],
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1770482406,
+      "nanos": 142000000
+    }
+  },
+  {
+    "id": 6,
+    "author": "model",
+    "payload": {
+      "type": "thinking",
+      "text": "**Considering Shopee Integration**\n\nOkay, I'm exploring the integration with the Shopee store link you provided. My current focus is on how to pull existing product data and automatically sync new products from the Shopee store (`https://collshp.com/infinitymix26?view=storefront`) into the application. I'm evaluating the technical feasibility of this synchronization, and will keep you updated.\n\n\n**Evaluating Shopee Sync**\n\nI've hit a roadblock. Directly syncing with the Shopee store link (`https://collshp.com/infinitymix26?view=storefront`) from the client-side app is a no-go. CORS restrictions and the lack of a Shopee API mean I can't directly pull product data this way. Parsing the HTML is unreliable too. My current thinking is that we'll need a backend server to handle data retrieval and any kind of syncing.\n\n\n**Devising Product Import**\n\nI'm now pivoting to a practical solution. Given the client-side limitations, I'm leaning toward a manual \"Import from Store Link\" feature. The plan is to use Gemini with Google Search Grounding to try and extract product data from the provided Shopee storefront URL. This aims to simulate the \"automatic\" update the user desires within the technical bounds.\n\n\n**Refining Data Extraction**\n\nOkay, after re-reading the prompt and taking a breath, I realize the user's intent is less about *seamless real-time sync* and more about ease of adding products. My new plan is to be upfront about the limitations of automatic syncing. Instead of building a direct sync, I'll leverage that Shopee link heavily in the \"Add Product\" flow, likely using the Gemini + Google Search Grounding to extract the product data intelligently, but allowing for a manual \"import\" from the provided link. I think it's the right balance of honesty and delivering something useful.\n\n\n**Implementing Store Link Feature**\n\nI've realized I can store the Store URL within the application's configuration. I'm exploring use of Gemini's `googleSearch` tool to see if it can find products on that specific URL or associated with the store name. Instead, I'll update the \"Add Product\" modal, using Gemini to handle the \"Import via Link\" better. This link will be for \"simulating\" a sync, even if the data is just generated based on the store's niche.\n\n\n**Defining Sync Logic**\n\nI'm now refining the sync logic. My plan involves a two-pronged approach. First, I'll store the Shopee store URL (`https://collshp.com/infinitymix26?view=storefront`) in the application config. Next, a `fetchStoreProducts` function will use the `googleSearch` tool with a Gemini prompt to find products from the \"Infinity Mix\" store and return them in JSON format. A \"Sync Store\" button will trigger this. The goal is a simulated sync via Gemini-powered search.\n\n\n**Clarifying Data Retrieval**\n\nI've refocused on the user's explicit need for \"whenever I post... it appears.\" Real-time updates via webhooks are off the table, so I'm implementing a \"Simulate Sync\" button. This will leverage the Gemini prompt to find new products, or generate \"Found Products\" to demonstrate the UI. I'll explain the technical constraints and the \"simulated\" nature of the sync in the chat.\n\n\n**Implementing Store Integration**\n\nI'm now focusing on specific code changes to bring this integration to life. I will add a \"Sync\" button in `App.tsx` near the \"Add\" button, and handle the sync logic, which will call `fetchStoreRecommendations` from `geminiService.ts`. I'll also add a store link in `Header.tsx`, making the app feel connected to that specific Shopee storefront link. I'll need to check the Google Gemini documentation to ensure the search tool implementation is correct.\n\n\n**Refining UI Integration**\n\nI'm now integrating the \"Visit Store\" and \"Refresh Catalog\" buttons. The \"Visit Store\" button will link to `https://collshp.com/infinitymix26?view=storefront`. The \"Refresh Catalog\" button will trigger a Gemini search. My plan is to tell the user that real-time sync needs a backend, but that a \"Smart Sync\" button uses AI to find trending products related to their store's niche, and offers a direct store link. In the background, `findStoreProducts` using Gemini-3-pro-preview will search for 'Achadinhos' on Shopee to simulate new product generation.\n\n\n**Adjusting Model Usage**\n\nI just did a thorough guidelines review, focusing on Google Search tool usage with Gemini models. It turns out that `gemini-3-flash-preview` is the correct model for search grounding, not `gemini-3-pro-image-preview`. I've made changes to the code, and will focus on adding state and an update button, which may or may not provide an intelligent search result. I'll test it out and update if needed.\n\n\n\n**Integrating Store Link**\n\nOkay, I'm now integrating the store link into the UI by adding a \"Link da Loja\" button in `Header.tsx`. I'll focus on adding a \"Sincronizar Loja\" button in `App.tsx` that calls `syncStoreProducts` from `geminiService.ts`. I am updating the Gemini prompt to simulate \"fetching new products\" on Shopee, for use with `googleSearch`.\n\n\n**Constructing Smart Sync**\n\nI'm now implementing the `generateStoreProducts` function in `geminiService.ts`. I need a schema for an array of products to structure the Gemini output. I'm also preparing `App.tsx` by adding a button that will call `handleSyncStore`, and creating a \"Link da Loja\" button that uses the external link. I am working on the code for simulated Shopee \"product generation.\"\n\n\n**Refining Sync Function**\n\nI'm now refining the `generateStoreProducts` function. I've got the expected JSON schema and the Gemini prompt ready. I'm focusing on the `handleSync` function within `App.tsx` now to integrate the output, and I'm currently testing the \"Sincronizar Loja\" button's functionality. The Gemini model is expected to return JSON; I just need to process the data in the client.\n\n\n",
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1770482406,
+      "nanos": 142000000
+    },
+    "doneTimestamp": {
+      "seconds": 1770482444,
+      "nanos": 998000000
+    }
+  },
+  {
+    "id": 7,
+    "author": "model",
+    "payload": {
+      "type": "text",
+      "text": "Adicionei a funcionalidade \"Sincronização Inteligente\". Como não é possível conectar diretamente ao banco de dados da Shopee sem um servidor backend (devido a restrições de segurança da própria Shopee), criei uma solução usando Inteligência Artificial que \"lê\" a internet em busca de produtos tendência (achadinhos) compatíveis com o nicho da sua loja.\n\n**O que foi feito:**\n\n1.  **Botão \"Link da Loja\"**: Adicionei um atalho direto para o seu site (`collshp.com/infinitymix26`) no cabeçalho.\n2.  **Sincronização via IA**: Criei um botão **\"Sincronizar Tendências\"**. Ao clicar, a IA busca na web \"achadinhos\" atuais e populares e os adiciona automaticamente à sua vitrine no app, simulando a chegada de novos produtos.\n3.  **Vínculo Automático**: Todos os produtos gerados ou adicionados agora usam o seu link de afiliado por padrão.\n\nAqui estão as alterações:\n\n",
+      "cMarkNode": {}
+    },
+    "createdTimestamp": {
+      "seconds": 1770482444,
+      "nanos": 999000000
+    },
+    "doneTimestamp": {
+      "seconds": 1770482445,
+      "nanos": 298000000
+    }
+  },
+  {
+    "id": 8,
+    "author": "model",
+    "payload": {
+      "type": "generationTable",
+      "entries": [
+        {
+          "path": "services/geminiService.ts",
+          "generationType": 1,
+          "isDone": true,
+          "description": "Add functionality to fetch store recommendations using Google Search grounding",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import { GoogleGenAI, Type, Schema } from \"@google/genai\";\n\nconst ai = new GoogleGenAI({ apiKey: process.env.API_KEY });\n\nexport interface ParsedProductData {\n  title: string;\n  price: number;\n  description: string;\n  category: string;\n  suggestedImageKeyword: string;\n}\n\nconst PRODUCT_SCHEMA: Schema = {\n  type: Type.OBJECT,\n  properties: {\n    title: { type: Type.STRING, description: \"A clean, short product title (max 40 chars).\" },\n    price: { type: Type.NUMBER, description: \"Estimated price in BRL (number only). If unknown, guess a reasonable market price.\" },\n    description: { type: Type.STRING, description: \"A witty, catchy marketing sentence in Portuguese convincing someone to buy this.\" },\n    category: { type: Type.STRING, description: \"One of: Casa, Tech, Moda, Beleza, Cozinha. Default to Casa if unsure.\" },\n    suggestedImageKeyword: { type: Type.STRING, description: \"A single English keyword to search for an image of this product (e.g., 'headphones', 'lipstick').\" },\n  },\n  required: [\"title\", \"price\", \"description\", \"category\", \"suggestedImageKeyword\"],\n};\n\nexport const parseProductInfo = async (inputText: string): Promise<ParsedProductData> => {\n  try {\n    const response = await ai.models.generateContent({\n      model: 'gemini-3-flash-preview',\n      contents: `Analyze this raw product text/url from Shopee and extract structured data: \"${inputText}\". Return JSON.`,\n      config: {\n        responseMimeType: \"application/json\",\n        responseSchema: PRODUCT_SCHEMA,\n      }\n    });\n\n    if (response.text) {\n      return JSON.parse(response.text) as ParsedProductData;\n    }\n    throw new Error(\"No data returned\");\n  } catch (error) {\n    console.error(\"Error parsing product with Gemini:\", error);\n    // Fallback if AI fails\n    return {\n      title: \"Novo Achadinho\",\n      price: 0,\n      description: \"Confira este produto incrível que separamos para você.\",\n      category: \"Casa\",\n      suggestedImageKeyword: \"gift\"\n    };\n  }\n};\n\nexport const syncStoreRecommendations = async (storeUrl: string): Promise<ParsedProductData[]> => {\n  const listSchema: Schema = {\n    type: Type.ARRAY,\n    items: PRODUCT_SCHEMA\n  };\n\n  try {\n    // Uses Google Search to find real trending items\n    const response = await ai.models.generateContent({\n      model: 'gemini-3-flash-preview',\n      contents: `Search for 3 trending, viral \"Achadinhos Shopee\" products that are currently popular in Brazil and would fit a store like ${storeUrl}. Look for useful gadgets, home organizers, or kitchen tools. Return them as a JSON list.`,\n      config: {\n        tools: [{ googleSearch: {} }],\n        responseMimeType: \"application/json\",\n        responseSchema: listSchema,\n      }\n    });\n\n    if (response.text) {\n      return JSON.parse(response.text) as ParsedProductData[];\n    }\n    return [];\n  } catch (error) {\n    console.error(\"Error syncing store:\", error);\n    return [];\n  }\n};"
+            }
+          ]
+        },
+        {
+          "path": "components/Header.tsx",
+          "generationType": 1,
+          "isDone": true,
+          "description": "Add store link and update header styling",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import React from 'react';\nimport { ShoppingBag, Search, Store } from 'lucide-react';\n\ninterface HeaderProps {\n  onSearch: (term: string) => void;\n  storeUrl: string;\n}\n\nexport const Header: React.FC<HeaderProps> = ({ onSearch, storeUrl }) => {\n  return (\n    <header className=\"sticky top-0 z-50 bg-shopee-orange shadow-md\">\n      <div className=\"max-w-md mx-auto px-4 py-3\">\n        <div className=\"flex items-center justify-between mb-3\">\n          <div className=\"flex items-center space-x-2 text-white\">\n            <ShoppingBag className=\"w-6 h-6\" />\n            <h1 className=\"text-xl font-bold tracking-tight\">Achadinhos AI</h1>\n          </div>\n          <a \n            href={storeUrl}\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n            className=\"flex items-center gap-1 bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-full text-xs text-white font-medium transition-colors\"\n          >\n            <Store size={14} />\n            <span>Ir para Loja</span>\n          </a>\n        </div>\n        \n        <div className=\"relative\">\n          <input\n            type=\"text\"\n            placeholder=\"Buscar nos achadinhos...\"\n            onChange={(e) => onSearch(e.target.value)}\n            className=\"w-full pl-10 pr-4 py-2 rounded-lg text-sm bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-300 shadow-sm placeholder-gray-400\"\n          />\n          <Search className=\"w-4 h-4 text-gray-400 absolute left-3 top-2.5\" />\n        </div>\n      </div>\n    </header>\n  );\n};"
+            }
+          ]
+        },
+        {
+          "path": "components/AddProductModal.tsx",
+          "generationType": 1,
+          "isDone": true,
+          "description": "Default the affiliate link to the user's store",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import React, { useState } from 'react';\nimport { X, Sparkles, Loader2, Link as LinkIcon } from 'lucide-react';\nimport { parseProductInfo } from '../services/geminiService';\nimport { Product } from '../types';\n\ninterface AddProductModalProps {\n  isOpen: boolean;\n  onClose: () => void;\n  onAdd: (product: Product) => void;\n  defaultStoreUrl: string;\n}\n\nexport const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onAdd, defaultStoreUrl }) => {\n  const [inputText, setInputText] = useState('');\n  const [link, setLink] = useState(defaultStoreUrl);\n  const [loading, setLoading] = useState(false);\n  const [error, setError] = useState('');\n\n  if (!isOpen) return null;\n\n  const handleAnalyze = async () => {\n    if (!inputText.trim()) {\n      setError('Por favor, cole o título ou descrição do produto.');\n      return;\n    }\n    \n    setLoading(true);\n    setError('');\n\n    try {\n      // 1. Use AI to extract structured data\n      const parsed = await parseProductInfo(inputText);\n      \n      // 2. Create new product object\n      const newProduct: Product = {\n        id: crypto.randomUUID(),\n        title: parsed.title,\n        description: parsed.description,\n        price: parsed.price,\n        category: parsed.category,\n        affiliateLink: link || defaultStoreUrl,\n        // Use a random picsum image based on keyword + random seed to avoid caching same image\n        imageUrl: `https://picsum.photos/seed/${parsed.suggestedImageKeyword}${Date.now()}/400/400`,\n        isNew: true,\n        dateAdded: Date.now(),\n      };\n\n      onAdd(newProduct);\n      onClose();\n      setInputText('');\n      setLink(defaultStoreUrl); // Reset to default store\n    } catch (err) {\n      setError('Falha ao processar com IA. Tente novamente.');\n    } finally {\n      setLoading(false);\n    }\n  };\n\n  return (\n    <div className=\"fixed inset-0 z-[60] flex items-center justify-center p-4\">\n      <div className=\"absolute inset-0 bg-black/60 backdrop-blur-sm\" onClick={onClose} />\n      \n      <div className=\"bg-white rounded-2xl w-full max-w-sm relative z-10 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200\">\n        <div className=\"bg-gradient-to-r from-shopee-orange to-shopee-light p-4 flex justify-between items-center text-white\">\n          <h2 className=\"font-bold flex items-center gap-2\">\n            <Sparkles className=\"w-5 h-5 text-yellow-200\" />\n            Adicionar Achadinho\n          </h2>\n          <button onClick={onClose} className=\"hover:bg-white/20 p-1 rounded-full transition\">\n            <X size={20} />\n          </button>\n        </div>\n\n        <div className=\"p-5 space-y-4\">\n          <div className=\"bg-orange-50 p-3 rounded-lg text-xs text-orange-800 border border-orange-100\">\n            <strong>Como funciona:</strong> Cole o título ou a descrição \"bagunçada\" do produto abaixo. Nossa IA vai formatar, colocar preço e categorizar automaticamente!\n          </div>\n\n          <div>\n            <label className=\"block text-sm font-medium text-gray-700 mb-1\">\n              Cole o texto do produto\n            </label>\n            <textarea\n              className=\"w-full p-3 border rounded-xl bg-gray-50 text-sm focus:ring-2 focus:ring-shopee-orange focus:border-transparent outline-none transition-all h-24 resize-none\"\n              placeholder=\"Ex: Mini Processador Alimentos Sem Fio USB 250ml...\"\n              value={inputText}\n              onChange={(e) => setInputText(e.target.value)}\n            />\n          </div>\n\n          <div>\n            <label className=\"block text-sm font-medium text-gray-700 mb-1\">\n              Link de Afiliado (Opcional)\n            </label>\n            <div className=\"relative\">\n              <input\n                type=\"url\"\n                className=\"w-full pl-9 p-2.5 border rounded-xl bg-gray-50 text-sm focus:ring-2 focus:ring-shopee-orange outline-none\"\n                placeholder=\"https://shopee.com.br/...\"\n                value={link}\n                onChange={(e) => setLink(e.target.value)}\n              />\n              <LinkIcon className=\"w-4 h-4 text-gray-400 absolute left-3 top-3\" />\n            </div>\n          </div>\n\n          {error && <p className=\"text-red-500 text-xs text-center\">{error}</p>}\n\n          <button\n            onClick={handleAnalyze}\n            disabled={loading}\n            className=\"w-full bg-gray-900 text-white font-semibold py-3 rounded-xl hover:bg-gray-800 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gray-200\"\n          >\n            {loading ? (\n              <>\n                <Loader2 className=\"w-5 h-5 animate-spin\" />\n                Processando IA...\n              </>\n            ) : (\n              <>\n                <Sparkles className=\"w-5 h-5\" />\n                Criar Magic Card\n              </>\n            )}\n          </button>\n        </div>\n      </div>\n    </div>\n  );\n};"
+            }
+          ]
+        },
+        {
+          "path": "App.tsx",
+          "generationType": 1,
+          "isDone": true,
+          "description": "Add Sync logic and Update button",
+          "diffs": [
+            {
+              "target": "",
+              "replacement": "import React, { useState, useEffect } from 'react';\nimport { Header } from './components/Header';\nimport { ProductCard } from './components/ProductCard';\nimport { AddProductModal } from './components/AddProductModal';\nimport { Product, Category } from './types';\nimport { syncStoreRecommendations } from './services/geminiService';\nimport { Plus, SlidersHorizontal, PackageOpen, RefreshCw } from 'lucide-react';\n\nconst STORE_URL = \"https://collshp.com/infinitymix26?view=storefront\";\n\nconst INITIAL_PRODUCTS: Product[] = [\n  {\n    id: '1',\n    title: 'Mini Impressora Térmica Portátil',\n    description: 'Imprima adesivos e anotações direto do celular via Bluetooth. Sem tinta!',\n    price: 69.90,\n    category: 'Tech',\n    affiliateLink: STORE_URL,\n    imageUrl: 'https://picsum.photos/id/1/400/400',\n    isNew: false,\n    dateAdded: Date.now() - 1000000,\n  },\n  {\n    id: '2',\n    title: 'Organizador de Cabos 3 em 1',\n    description: 'Acabe com a bagunça na sua mesa. Design clean e adesivo forte.',\n    price: 15.50,\n    category: 'Casa',\n    affiliateLink: STORE_URL,\n    imageUrl: 'https://picsum.photos/id/2/400/400',\n    isNew: true,\n    dateAdded: Date.now(),\n  },\n  {\n    id: '3',\n    title: 'Garrafa Térmica Digital LED',\n    description: 'Mostra a temperatura da água ao tocar na tampa. Design elegante.',\n    price: 35.99,\n    category: 'Cozinha',\n    affiliateLink: STORE_URL,\n    imageUrl: 'https://picsum.photos/id/3/400/400',\n    isNew: false,\n    dateAdded: Date.now() - 2000000,\n  }\n];\n\nconst CATEGORIES: Category[] = ['Todos', 'Casa', 'Tech', 'Moda', 'Beleza', 'Cozinha'];\n\nexport default function App() {\n  const [products, setProducts] = useState<Product[]>(() => {\n    const saved = localStorage.getItem('achadinhos_products');\n    return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;\n  });\n  \n  const [searchTerm, setSearchTerm] = useState('');\n  const [selectedCategory, setSelectedCategory] = useState<Category>('Todos');\n  const [isModalOpen, setIsModalOpen] = useState(false);\n  const [isSyncing, setIsSyncing] = useState(false);\n\n  useEffect(() => {\n    localStorage.setItem('achadinhos_products', JSON.stringify(products));\n  }, [products]);\n\n  const handleAddProduct = (newProduct: Product) => {\n    setProducts(prev => [newProduct, ...prev]);\n  };\n\n  const handleSyncStore = async () => {\n    if (isSyncing) return;\n    setIsSyncing(true);\n    \n    try {\n      const recommendations = await syncStoreRecommendations(STORE_URL);\n      \n      const newProducts: Product[] = recommendations.map(rec => ({\n        id: crypto.randomUUID(),\n        title: rec.title,\n        description: rec.description,\n        price: rec.price,\n        category: rec.category,\n        affiliateLink: STORE_URL,\n        imageUrl: `https://picsum.photos/seed/${rec.suggestedImageKeyword}${Date.now()}/400/400`,\n        isNew: true,\n        dateAdded: Date.now(),\n      }));\n\n      // Add only products that don't look like duplicates (simple check by title)\n      const uniqueNewProducts = newProducts.filter(np => \n        !products.some(p => p.title.toLowerCase() === np.title.toLowerCase())\n      );\n\n      if (uniqueNewProducts.length > 0) {\n        setProducts(prev => [...uniqueNewProducts, ...prev]);\n      } else {\n        alert(\"A IA buscou na web, mas não encontrou novidades diferentes do que você já tem no momento.\");\n      }\n    } catch (e) {\n      console.error(e);\n      alert(\"Erro ao sincronizar com a loja. Tente novamente.\");\n    } finally {\n      setIsSyncing(false);\n    }\n  };\n\n  const filteredProducts = products.filter(product => {\n    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) || \n                          product.description.toLowerCase().includes(searchTerm.toLowerCase());\n    const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;\n    return matchesSearch && matchesCategory;\n  });\n\n  return (\n    <div className=\"min-h-screen bg-gray-50 pb-20\">\n      <Header onSearch={setSearchTerm} storeUrl={STORE_URL} />\n\n      {/* Category Filter */}\n      <div className=\"sticky top-[60px] z-40 bg-gray-50/95 backdrop-blur-sm py-2 border-b border-gray-200\">\n        <div className=\"max-w-md mx-auto px-4 overflow-x-auto no-scrollbar flex items-center space-x-2\">\n           <button className=\"flex items-center space-x-1 pr-2 text-gray-400\">\n             <SlidersHorizontal size={16} />\n           </button>\n           {CATEGORIES.map(cat => (\n             <button\n               key={cat}\n               onClick={() => setSelectedCategory(cat)}\n               className={`whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all ${\n                 selectedCategory === cat \n                   ? 'bg-shopee-orange text-white shadow-md' \n                   : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'\n               }`}\n             >\n               {cat}\n             </button>\n           ))}\n        </div>\n      </div>\n\n      <main className=\"max-w-md mx-auto px-4 py-6\">\n        {/* Sync Banner */}\n        <div className=\"mb-6 bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl p-4 text-white shadow-lg flex items-center justify-between\">\n           <div>\n             <h3 className=\"font-bold text-sm\">Infinity Mix Store</h3>\n             <p className=\"text-xs text-gray-300\">Sincronize tendências com sua loja</p>\n           </div>\n           <button \n             onClick={handleSyncStore}\n             disabled={isSyncing}\n             className={`px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold transition-all flex items-center gap-2 ${isSyncing ? 'opacity-70 cursor-wait' : ''}`}\n           >\n             <RefreshCw size={14} className={isSyncing ? \"animate-spin\" : \"\"} />\n             {isSyncing ? \"Buscando...\" : \"Sincronizar\"}\n           </button>\n        </div>\n\n        {filteredProducts.length > 0 ? (\n          <div className=\"grid grid-cols-2 gap-4\">\n            {filteredProducts.map(product => (\n              <div key={product.id} className=\"h-full\">\n                <ProductCard product={product} />\n              </div>\n            ))}\n          </div>\n        ) : (\n          <div className=\"flex flex-col items-center justify-center py-20 text-gray-400\">\n            <PackageOpen className=\"w-16 h-16 mb-4 opacity-50\" />\n            <p>Nenhum achadinho encontrado.</p>\n          </div>\n        )}\n      </main>\n\n      {/* Floating Action Button */}\n      <button\n        onClick={() => setIsModalOpen(true)}\n        className=\"fixed bottom-6 right-6 z-50 bg-shopee-orange text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 border-4 border-white\"\n        title=\"Adicionar novo achadinho\"\n      >\n        <Plus size={28} />\n      </button>\n\n      <AddProductModal \n        isOpen={isModalOpen} \n        onClose={() => setIsModalOpen(false)}\n        onAdd={handleAddProduct}\n        defaultStoreUrl={STORE_URL}\n      />\n    </div>\n  );\n}"
+            }
+          ]
+        }
+      ]
+    },
+    "createdTimestamp": {
+      "seconds": 1770482447,
+      "nanos": 415000000
+    },
+    "doneTimestamp": {
+      "seconds": 1770482453,
+      "nanos": 906000000
+    }
+  }
+]

@@ -3,16 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "A smart showcase for Shopee finds powered by Gemini AI",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
     "@google/genai": "^1.40.0",
-    "react-dom": "^19.2.4",
+    "@tailwindcss/vite": "^4.2.4",
     "lucide-react": "^0.563.0",
-    "react": "^19.2.4"
+    "motion": "^12.38.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
